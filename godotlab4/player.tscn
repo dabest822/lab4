@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://cdgguixxxmff8"]
+[gd_scene load_steps=3 format=3 uid="uid://cdgguixxxmff8"]
 
-[node name="Node3D" type="CharacterBody3D"]
+[ext_resource type="PackedScene" uid="uid://corfs7ynl32lq" path="res://Mario/mario.dae" id="1_062np"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iaf6t"]
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="mario" parent="." instance=ExtResource("1_062np")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_iaf6t")
+
+[editable path="mario"]

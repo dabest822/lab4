@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d33ki3idnsjcq"
-path.s3tc="res://.godot/imported/skin.png-14432607fb1b6f90737b93d459a47c11.s3tc.ctex"
+uid="uid://xansueb18m32"
+path.s3tc="res://.godot/imported/Nintendo 64 - Super Mario 64 - Course 01 Bob-omb Battlefield.png-e72ec7083f73d7f29bcdccbb65c13556.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Mario/skin.png"
-dest_files=["res://.godot/imported/skin.png-14432607fb1b6f90737b93d459a47c11.s3tc.ctex"]
+source_file="res://Nintendo 64 - Super Mario 64 - Course 01 Bob-omb Battlefield.png"
+dest_files=["res://.godot/imported/Nintendo 64 - Super Mario 64 - Course 01 Bob-omb Battlefield.png-e72ec7083f73d7f29bcdccbb65c13556.s3tc.ctex"]
 
 [params]
 

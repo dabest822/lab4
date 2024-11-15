@@ -1,4 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ci7mjcm242meu"]
+[gd_scene load_steps=11 format=3 uid="uid://ci7mjcm242meu"]
+
+[ext_resource type="PackedScene" uid="uid://cdgguixxxmff8" path="res://player.tscn" id="1_wkcif"]
+[ext_resource type="Texture2D" uid="uid://vdgkgmga2kr0" path="res://floor.png" id="1_yvegn"]
+[ext_resource type="Script" path="res://testmove.gd" id="2_yj3pa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2gnvr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -13,8 +17,19 @@ sky = SubResource("Sky_jjguo")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_tjoy7"]
-size = Vector2(10, 10)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bivex"]
+albedo_texture = ExtResource("1_yvegn")
+uv1_scale = Vector3(11, 11, 11)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a6f3u"]
+material = SubResource("StandardMaterial3D_bivex")
+size = Vector2(50, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fr5ys"]
+size = Vector3(50, 0.1, 50)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_etqmu"]
+height = 1.72494
 
 [node name="Node3D" type="Node3D"]
 
@@ -28,5 +43,42 @@ shadow_enabled = true
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_tjoy7")
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_a6f3u")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_fr5ys")
+
+[node name="Player" parent="." instance=ExtResource("1_wkcif")]
+script = ExtResource("2_yj3pa")
+
+[node name="mario_cap_off" parent="Player/mario/Armature/Skeleton3D" index="1"]
+visible = false
+
+[node name="mario_left_hand_open" parent="Player/mario/Armature/Skeleton3D" index="2"]
+visible = false
+
+[node name="mario_right_hand_open" parent="Player/mario/Armature/Skeleton3D" index="3"]
+visible = false
+
+[node name="mario_right_hand_cap" parent="Player/mario/Armature/Skeleton3D" index="4"]
+visible = false
+
+[node name="mario_right_hand_cap_wings" parent="Player/mario/Armature/Skeleton3D" index="5"]
+visible = false
+
+[node name="mario_right_hand_peace" parent="Player/mario/Armature/Skeleton3D" index="6"]
+visible = false
+
+[node name="mario_cap_wings" parent="Player/mario/Armature/Skeleton3D" index="7"]
+visible = false
+
+[node name="CollisionShape3D" parent="Player" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+shape = SubResource("CapsuleShape3D_etqmu")
+
+[editable path="Player"]
+[editable path="Player/mario"]
