@@ -13,7 +13,7 @@ extends CharacterBody3D
 
 # Animation settings
 @export var breathing_speed: float = 2.0
-@export var breathing_strength: float = 0.1
+@export var breathing_strength: float = 0.2
 @export var jump_animation_speed: float = 2.0
 @export var walk_speed: float = 5.0  # Controls animation speed
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ci7mjcm242meu"]
+[gd_scene load_steps=26 format=3 uid="uid://ci7mjcm242meu"]
 
 [ext_resource type="Texture2D" uid="uid://vdgkgmga2kr0" path="res://floor.png" id="1_yvegn"]
 [ext_resource type="Script" path="res://testmove.gd" id="2_yj3pa"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://38yg08nmkj41" path="res://Star.tres" id="6_gyq2m"]
 [ext_resource type="Material" uid="uid://bocawt7dtvr1l" path="res://NewEyes.tres" id="6_uukhq"]
 [ext_resource type="Script" path="res://rotatingstar.gd" id="8_11yxt"]
+[ext_resource type="AudioStream" uid="uid://dtt8rm71krc5g" path="res://Music/sm64 get star sound (HD).mp3" id="9_jstfg"]
 [ext_resource type="PackedScene" uid="uid://b28vpuqjyqb7f" path="res://AltMario/scene.gltf" id="9_nnpf7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2gnvr"]
@@ -153,6 +154,10 @@ shape = SubResource("BoxShape3D_fr5ys")
 stream = ExtResource("4_brpa4")
 volume_db = -30.0
 parameters/looping = true
+
+[node name="starget" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_jstfg")
+volume_db = -15.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.4, 0, 3.49691e-08, 0, 0.4, 0, -3.49691e-08, 0, -0.4, -9, 14, 50)
