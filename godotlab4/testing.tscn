@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxtjijhmtn744"]
-
-[ext_resource type="PackedScene" uid="uid://b28vpuqjyqb7f" path="res://AltMario/scene.gltf" id="1_fupaw"]
-
-[node name="Node3D" type="Node3D"]
-
-[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_fupaw")]
-
-[editable path="Sketchfab_Scene"]

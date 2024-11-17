@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbb2bimutyldl"
-path.s3tc="res://.godot/imported/mario_logo_edit.png-fef0aba34e170098c3109883db00256d.s3tc.ctex"
+uid="uid://xansueb18m32"
+path.s3tc="res://.godot/imported/Nintendo 64 - Super Mario 64 - Course 01 Bob-omb Battlefield.png-9913368c21ab05d62d5a7c97dea9fe72.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://mario_logo_edit.png"
-dest_files=["res://.godot/imported/mario_logo_edit.png-fef0aba34e170098c3109883db00256d.s3tc.ctex"]
+source_file="res://Sprites/Nintendo 64 - Super Mario 64 - Course 01 Bob-omb Battlefield.png"
+dest_files=["res://.godot/imported/Nintendo 64 - Super Mario 64 - Course 01 Bob-omb Battlefield.png-9913368c21ab05d62d5a7c97dea9fe72.s3tc.ctex"]
 
 [params]
 
