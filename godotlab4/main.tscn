@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ci7mjcm242meu"]
+[gd_scene load_steps=25 format=3 uid="uid://ci7mjcm242meu"]
 
 [ext_resource type="Texture2D" uid="uid://vdgkgmga2kr0" path="res://floor.png" id="1_yvegn"]
 [ext_resource type="Script" path="res://testmove.gd" id="2_yj3pa"]
@@ -57,6 +57,9 @@ size = Vector2(50, 75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fr5ys"]
 size = Vector3(50, 0.1, 80)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ga5f"]
+size = Vector3(2.5, 2.5, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_etqmu"]
 height = 1.52453
@@ -158,11 +161,16 @@ surface_material_override/0 = ExtResource("6_uukhq")
 surface_material_override/1 = ExtResource("6_gyq2m")
 script = ExtResource("8_11yxt")
 
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+shape = SubResource("BoxShape3D_4ga5f")
+
 [node name="AltMario" type="CharacterBody3D" parent="."]
 script = ExtResource("2_yj3pa")
 
 [node name="Sketchfab_Scene" parent="AltMario" instance=ExtResource("9_nnpf7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 
 [node name="Armature" parent="AltMario/Sketchfab_Scene/Sketchfab_model/58096ac775fb4b5c8dbc242595fc95e1_fbx/Object_2/RootNode" index="1"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -0.02, 0)
@@ -170,14 +178,15 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -0.02, 0)
 [node name="Skeleton3D" parent="AltMario/Sketchfab_Scene/Sketchfab_model/58096ac775fb4b5c8dbc242595fc95e1_fbx/Object_2/RootNode/Armature/Object_8" index="0"]
 bones/1/rotation = Quaternion(0.707107, 2.35608e-08, 2.35608e-08, 0.707107)
 bones/4/rotation = Quaternion(-7.11755e-08, 2.53189e-07, -0.00679428, 0.999977)
-bones/6/rotation = Quaternion(-9.32605e-08, -7.66802e-08, 0.892602, -0.450845)
+bones/6/rotation = Quaternion(0.000474975, 0.000474975, 0.900475, -0.449525)
 bones/7/rotation = Quaternion(5.0445e-09, -2.54827e-08, -0.127107, 0.991889)
-bones/10/rotation = Quaternion(-7.08741e-10, -1.5107e-07, 0.892602, 0.450845)
+bones/10/rotation = Quaternion(0.000474975, 0.000474975, 0.900475, 0.450475)
 bones/11/rotation = Quaternion(1.92463e-08, 6.61484e-08, 0.127107, 0.991889)
-bones/14/rotation = Quaternion(-7.70314e-08, 2.11758e-22, 1, 0)
-bones/15/rotation = Quaternion(0.0027351, -2.38418e-07, -4.12992e-10, 0.999996)
+bones/14/rotation = Quaternion(0.000474975, 0.000474975, 1.00048, 0.000474975)
+bones/15/rotation = Quaternion(0.000474975, 0.000474975, 0.000474975, 1.00048)
+bones/15/scale = Vector3(1.00048, 1.00048, 1.00048)
 bones/16/rotation = Quaternion(0.711211, -1.50799e-05, -1.55275e-05, 0.702978)
-bones/18/rotation = Quaternion(1.03914e-08, 1.05879e-22, 1, 0)
+bones/18/rotation = Quaternion(0.000474975, 0.000474975, 1.00048, 0.000474975)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AltMario"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
