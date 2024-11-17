@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://ci7mjcm242meu"]
+[gd_scene load_steps=28 format=3 uid="uid://ci7mjcm242meu"]
 
+[ext_resource type="PackedScene" uid="uid://cdgguixxxmff8" path="res://player.tscn" id="1_wkcif"]
 [ext_resource type="Texture2D" uid="uid://vdgkgmga2kr0" path="res://floor.png" id="1_yvegn"]
 [ext_resource type="Script" path="res://testmove.gd" id="2_yj3pa"]
 [ext_resource type="AudioStream" uid="uid://dmvo2a2f3cvdd" path="res://Super Mario 64 - Main Theme Music - Bob-Omb Battlefield.mp3" id="4_brpa4"]
@@ -57,6 +58,18 @@ size = Vector2(50, 75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fr5ys"]
 size = Vector3(50, 0.1, 80)
+
+[sub_resource type="Animation" id="Animation_qlrjd"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_6nns8"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_plx3c"]
+_data = {
+"Idle": SubResource("Animation_qlrjd"),
+"RESET": SubResource("Animation_6nns8")
+}
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_etqmu"]
 height = 1.52453
@@ -146,6 +159,43 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
 shape = SubResource("BoxShape3D_fr5ys")
 
+[node name="Player" parent="." instance=ExtResource("1_wkcif")]
+visible = false
+
+[node name="Skeleton3D" parent="Player/mario/Armature" index="0"]
+show_rest_only = true
+bones/8/position = Vector3(0.000474975, 5.00048, 0.000474975)
+
+[node name="mario_cap_off" parent="Player/mario/Armature/Skeleton3D" index="1"]
+visible = false
+
+[node name="mario_left_hand_open" parent="Player/mario/Armature/Skeleton3D" index="2"]
+visible = false
+
+[node name="mario_right_hand_open" parent="Player/mario/Armature/Skeleton3D" index="3"]
+visible = false
+
+[node name="mario_right_hand_cap" parent="Player/mario/Armature/Skeleton3D" index="4"]
+visible = false
+
+[node name="mario_right_hand_cap_wings" parent="Player/mario/Armature/Skeleton3D" index="5"]
+visible = false
+
+[node name="mario_right_hand_peace" parent="Player/mario/Armature/Skeleton3D" index="6"]
+visible = false
+
+[node name="mario_cap_wings" parent="Player/mario/Armature/Skeleton3D" index="7"]
+visible = false
+
+[node name="AnimationPlayer" parent="Player/mario" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_plx3c")
+}
+
+[node name="CollisionShape3D" parent="Player" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+shape = SubResource("CapsuleShape3D_etqmu")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_brpa4")
 volume_db = -30.0
@@ -159,13 +209,10 @@ surface_material_override/1 = ExtResource("6_gyq2m")
 script = ExtResource("8_11yxt")
 
 [node name="AltMario" type="CharacterBody3D" parent="."]
-script = ExtResource("2_yj3pa")
 
 [node name="Sketchfab_Scene" parent="AltMario" instance=ExtResource("9_nnpf7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
-
-[node name="Armature" parent="AltMario/Sketchfab_Scene/Sketchfab_model/58096ac775fb4b5c8dbc242595fc95e1_fbx/Object_2/RootNode" index="1"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -0.02, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+script = ExtResource("2_yj3pa")
 
 [node name="Skeleton3D" parent="AltMario/Sketchfab_Scene/Sketchfab_model/58096ac775fb4b5c8dbc242595fc95e1_fbx/Object_2/RootNode/Armature/Object_8" index="0"]
 bones/1/rotation = Quaternion(0.707107, 2.35608e-08, 2.35608e-08, 0.707107)
@@ -183,4 +230,6 @@ bones/18/rotation = Quaternion(1.03914e-08, 1.05879e-22, 1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 shape = SubResource("CapsuleShape3D_etqmu")
 
+[editable path="Player"]
+[editable path="Player/mario"]
 [editable path="AltMario/Sketchfab_Scene"]

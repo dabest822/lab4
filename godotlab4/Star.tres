@@ -3,5 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://b2pixg11e62v" path="res://Star/body.png" id="1_g1cm5"]
 
 [resource]
+shading_mode = 0
 albedo_color = Color(1, 1, 0, 1)
 albedo_texture = ExtResource("1_g1cm5")
