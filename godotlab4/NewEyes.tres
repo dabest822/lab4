@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bocawt7dtvr1l"]
+
+[ext_resource type="Shader" path="res://eyeshader.gdshader" id="1_uj81f"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_uj81f")
+shader_parameter/eye_color = Vector4(0, 0, 0, 1)
+shader_parameter/eye_highlight_color = Vector4(1, 1, 1, 1)
+shader_parameter/eye_radius_x = 0.08
+shader_parameter/eye_radius_y = 0.15
+shader_parameter/highlight_radius = 0.05
+shader_parameter/left_eye_position = Vector2(0.3, 0.5)
+shader_parameter/right_eye_position = Vector2(0.7, 0.5)

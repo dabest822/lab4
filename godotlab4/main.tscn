@@ -1,9 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://ci7mjcm242meu"]
+[gd_scene load_steps=23 format=3 uid="uid://ci7mjcm242meu"]
 
 [ext_resource type="PackedScene" uid="uid://cdgguixxxmff8" path="res://player.tscn" id="1_wkcif"]
 [ext_resource type="Texture2D" uid="uid://vdgkgmga2kr0" path="res://floor.png" id="1_yvegn"]
 [ext_resource type="Script" path="res://testmove.gd" id="2_yj3pa"]
 [ext_resource type="AudioStream" uid="uid://dmvo2a2f3cvdd" path="res://Super Mario 64 - Main Theme Music - Bob-Omb Battlefield.mp3" id="4_brpa4"]
+[ext_resource type="ArrayMesh" uid="uid://cn7rpxq7u3wc" path="res://Star/star.obj" id="5_yyaa2"]
+[ext_resource type="Material" uid="uid://38yg08nmkj41" path="res://Star.tres" id="6_gyq2m"]
+[ext_resource type="Material" uid="uid://bocawt7dtvr1l" path="res://NewEyes.tres" id="6_uukhq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2gnvr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -24,22 +27,35 @@ albedo_color = Color(0.4311, 0.280423, 0.128667, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_t0kvy"]
 size = Vector3(5, 2, 6)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k68al"]
+albedo_color = Color(0.431373, 0.282353, 0.129412, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_0f1b7"]
-size = Vector3(5, 5, 6)
+size = Vector3(5, 4, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1yyty"]
+albedo_color = Color(0.431373, 0.282353, 0.129412, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tr0a2"]
-size = Vector3(8, 9, 6)
+size = Vector3(8, 6.5, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p2otu"]
+size = Vector3(4, 8, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p4dg8"]
+size = Vector3(5, 10, 22)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bivex"]
 albedo_texture = ExtResource("1_yvegn")
 uv1_scale = Vector3(11, 11, 11)
+texture_filter = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_a6f3u"]
 material = SubResource("StandardMaterial3D_bivex")
-size = Vector2(50, 50)
+size = Vector2(50, 75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fr5ys"]
-size = Vector3(50, 0.1, 50)
+size = Vector3(50, 0.1, 80)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_etqmu"]
 height = 1.72494
@@ -71,8 +87,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 8)
 shape = SubResource("BoxShape3D_t0kvy")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.5, 17)
-size = Vector3(5, 5, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 16)
+size = Vector3(5, 4, 6)
+material = SubResource("StandardMaterial3D_k68al")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 17)
@@ -82,8 +99,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -17)
 shape = SubResource("BoxShape3D_0f1b7")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 4.5, 25)
-size = Vector3(8, 9, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3, 23.5)
+size = Vector3(8, 6.5, 6)
+material = SubResource("StandardMaterial3D_1yyty")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -8)
@@ -92,14 +110,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -8)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 8)
 shape = SubResource("BoxShape3D_tr0a2")
 
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 4, 31.5)
+size = Vector3(4, 8, 4)
+material = SubResource("StandardMaterial3D_1yyty")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D4/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 8)
+shape = SubResource("BoxShape3D_p2otu")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 5, 43)
+size = Vector3(5, 10, 22)
+material = SubResource("StandardMaterial3D_1yyty")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D5/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 8)
+shape = SubResource("BoxShape3D_p4dg8")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
 mesh = SubResource("PlaneMesh_a6f3u")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
 shape = SubResource("BoxShape3D_fr5ys")
 
 [node name="Player" parent="." instance=ExtResource("1_wkcif")]
@@ -133,6 +176,12 @@ shape = SubResource("CapsuleShape3D_etqmu")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_brpa4")
 volume_db = -30.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.4, 0, 3.49691e-08, 0, 0.4, 0, -3.49691e-08, 0, -0.4, -9, 14, 50)
+mesh = ExtResource("5_yyaa2")
+surface_material_override/0 = ExtResource("6_uukhq")
+surface_material_override/1 = ExtResource("6_gyq2m")
 
 [editable path="Player"]
 [editable path="Player/mario"]
