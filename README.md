@@ -1,6 +1,6 @@
 Wynn Casadona's Submission For Lab 4 (Hello 3D)
 
-This is a simple 10-second 3D level where you're controlling Mario from SM64, trying to reach the Power Star at the end.
+This is a simple 10-second 3D level where you're controlling Mario from SM64, trying to reach the Power Star in the distance.
 
 Controls: Arrow Keys To Move, Space Bar/Enter To Jump.
 
