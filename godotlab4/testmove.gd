@@ -5,8 +5,8 @@ extends CharacterBody3D
 @export var gravity: float = 20.0
 
 # Camera settings
-@export var camera_distance: float = 5.0
-@export var camera_height: float = 6.0
+@export var camera_distance: float = 4.0  # Changed to your preferred value
+@export var camera_height: float = 3.5    # Changed to your preferred value
 @export var camera_lerp_speed: float = 2.0
 @export var camera_rotation_speed: float = 0.1
 
@@ -17,6 +17,7 @@ extends CharacterBody3D
 
 @onready var camera = get_parent().get_node("Camera3D")
 @onready var skeleton = $mario/Armature/Skeleton3D
+@onready var music = get_parent().get_node("AudioStreamPlayer")
 var camera_rotation: float = 0.0
 var run_cycle: float = 0.0
 
@@ -29,6 +30,10 @@ func _ready() -> void:
 		get_node("mario/Armature/Skeleton3D/right_wing").visible = false
 	if has_node("mario/Armature/Skeleton3D/left_wing"):
 		get_node("mario/Armature/Skeleton3D/left_wing").visible = false
+	
+	# Start the music
+	if music:
+		music.play()
 
 func _physics_process(delta: float) -> void:
 	# Add gravity
@@ -145,7 +150,7 @@ func animate_idle(_delta: float) -> void:
 	set_bone_pose("spine_rotation", Vector3(breath, 0, 0))
 	set_bone_pose("chest", Vector3(breath, 0, 0))
 
-func set_bone_pose(bone_name: String, rotation: Vector3) -> void:
+func set_bone_pose(bone_name: String, bone_rot: Vector3) -> void:
 	var bone_idx = skeleton.find_bone(bone_name)
 	if bone_idx != -1:
-		skeleton.set_bone_pose_rotation(bone_idx, Quaternion.from_euler(rotation))
+		skeleton.set_bone_pose_rotation(bone_idx, Quaternion.from_euler(bone_rot))
